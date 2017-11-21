@@ -1,10 +1,11 @@
 void setup() {
   fullScreen(SPAN); 
   r = new Radar(width / 2, height / 2 ,100, .5,255);
+  dot = new BeepDot(mouseX, mouseY, 0);
 }
 
 Radar r;
-
+BeepDot dot;
   
 void draw() {
   background(0);
@@ -15,5 +16,8 @@ void draw() {
 }
 
 void mousePressed() {
-  exit(); 
+  if(mousePressed){
+    dot.update();  
+  }
+  
 }
