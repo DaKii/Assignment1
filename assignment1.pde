@@ -1,44 +1,39 @@
 void setup() {
-  size(500,500); 
+  size(500, 500);
   r = new Radar(width / 2, height / 2 ,100, .5,255);
-  dot = new BeepDot(mouseX, mouseY, 0);
+  d = new DashBoard();
 }
 
 Radar r;
-BeepDot dot;
- 
-float arcSpeed = 0.5;
-int choice = 0;
-float arcStart = -PI / 6;
-float arcStop = PI / 6;  
+RadarDot rd;
+DashBoard d;
 
+
+int radarAmount = 4;
+int i;  
+  
+ArrayList<RadarDot> radarDots = new ArrayList<RadarDot>();  
+  
 void draw() {
-  startMenu();
+  d.render();
   
-  //background(0);
-  //r.render();
-  //r.update();
+  r.render();
+  r.update();
   
-  
-}
-
-/*void mousePressed() {
-  if(mousePressed){
-    dot.update();  
+  if(radarDots.size() < radarAmount){
+    for( i = 0; i < radarAmount; i++){  
+      rd = new RadarDot(random(0,width), random((height / 2 - r.radius), (height - r.radius)),50, 20);
+      radarDots.add(rd);
+      rd.moveDot();
+     }
   }
-  
-}*/
-
-void startMenu(){
-  background(255);
-  noFill();  
-  arc(width / 2, height / 2, 100, 100,arcStart, arcStop);
-  arc(width / 2, height / 2, 200, 200,arcStart, arcStop);
-  arc(width / 2, height / 2, 300, 300,arcStart, arcStop);
-  arc(width / 2, height / 2, 400, 400,arcStart, arcStop);
-  arc(width / 2, height / 2, 500, 500,arcStart, arcStop);
-
-  arcStart = arcStart + PI;  
-  arcStop = arcStop + PI;  
+   
+   
+   
 }
+
+void mousePressed(){
   
+ 
+  
+}
