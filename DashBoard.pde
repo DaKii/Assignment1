@@ -1,20 +1,51 @@
 class DashBoard {
-  
-  
+   
   int borderW = width / 4;
-  int borderH =  height / 4;
+  int borderH =  height / 20;
+  int buttonAmount = 6;
+  int textW = 100;
+  int i;
+  
+  ArrayList<Button> buttons = new ArrayList<Button>();
   
   void render(){
-   background(0);
-   fill(125);
-   rect(0 , borderH , width /4 , height /2); 
-   rect((width - width/ 4), borderH , borderW , height /2); 
+   background( 255);
+   noFill();
+   stroke(0,125,255);
    
-   triangle(0 , borderH / 2 , 0 , height / 4 , borderW , borderH);
-   triangle(width , borderH / 2 , width , borderH , (width - borderW) , borderH); 
+   strokeWeight(2);
+   line( borderW, borderH , borderW , height - borderH);
    
-   quad(0 , (height - borderH ) + (borderH /4) , borderW , (height - borderH ) + (borderH /4) , borderW + (borderW / 4) , height, borderW / 4 , height); 
-   quad(width - borderW , (height - borderH ) + (borderH /4) , width , (height - borderH ) + (borderH /4) , width - borderW / 4 , height, width - (borderW + borderW / 4) , height); 
+   fill(0,125,255);
+   quad(borderW / 8, height / 4 - borderH, borderW / 3.5 ,height / 4 - borderH, borderW / 2, borderH , 100 , borderH);
+   pushMatrix();
+   translate(borderW / 3.5, 0);
+   quad( borderW / 8, borderH , borderW / 3.5 , borderH, borderW  / 2, height / 4 - borderH, 100  ,height / 4 - borderH);
+   popMatrix();
+   
+   for ( i = 0; i < buttonAmount; i++){
+     buttons.add(new Button( borderW / 8 , textW * i , borderW - borderW / 8));
+   }
+   
+   for(i = 0; i < buttons.size(); i++){
+     pushMatrix();
+     translate( 0 , height /4);
+     Button button = buttons.get(i);
+     button.render();
+     popMatrix();
+   }
+    
+     pushMatrix();
+     translate( borderW / 8 , height /4);
+     text("Helo" , textW , textW / 4);
+     text("Helo" , textW , textW / 4 + textW);
+     text("Helo" , textW , textW / 4 + textW * 2);
+     text("Helo" , textW , textW / 4);
+     text("Helo" , textW , textW / 4);
+     text("Helo" , textW , textW / 4);
+     popMatrix();
+   
+   
   }
   
   

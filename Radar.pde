@@ -31,7 +31,7 @@ class Radar
     
     int circleAmount = 6;
     float cInterval = (radius* 2) / circleAmount;
-    stroke(0, 0, 255);
+    stroke(0, 125, 255);
     noFill();
     for ( i = 0; i < circleAmount; i++) {
       if ( i == 0) {

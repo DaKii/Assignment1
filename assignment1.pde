@@ -1,5 +1,5 @@
 void setup() {
-  size(500, 500);
+  fullScreen(SPAN);
   r = new Radar(width / 2, height / 2 ,100, .5,255);
   d = new DashBoard();
 }
