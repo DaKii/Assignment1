@@ -9,6 +9,8 @@ class Radar
   float frequency;
   color c;
   int i;
+  float borderW = width / 4;
+  float borderH = height /4;
   
   Radar(float cx, float cy, float radius, float frequency, color c)
   {
@@ -28,10 +30,11 @@ class Radar
   
   void render()
   {
-    
+    pushMatrix();
+    translate(width - borderW, height / 2);
     int circleAmount = 6;
     float cInterval = (radius* 2) / circleAmount;
-    stroke(0, 125, 255);
+    stroke(255);
     noFill();
     for ( i = 0; i < circleAmount; i++) {
       if ( i == 0) {
@@ -45,17 +48,15 @@ class Radar
     }
 
     int trailLength = 10;
-    float blueIntensity = 255 / (float)trailLength;
+    float look = 125/trailLength;
     for(int i = 0 ; i < trailLength ; i ++)
     {
-      stroke(0, 0, i * blueIntensity);
+      stroke(125 + (i * look), 125 + (i * look), 125 + (i * look));
       float x = cx + sin(theta + i * speed) * radius;
       float y = cy -cos(theta + i * speed) * radius;
       line(cx, cy, x, y);
     }
-    
-    
-    
-    
+     popMatrix();   
+
   }
 }
