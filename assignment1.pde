@@ -1,6 +1,6 @@
 void setup() {
   fullScreen(SPAN);
-  r = new Radar(width / 2, height / 2 ,100, .5,255);
+  r = new Radar(width / 2, height / 2 ,100,.5,255);
   d = new DashBoard();
 }
 
@@ -19,14 +19,7 @@ void draw() {
   
   r.render();
   r.update();
-  
-  if(radarDots.size() < radarAmount){
-    for( i = 0; i < radarAmount; i++){  
-      rd = new RadarDot(random(0,width), random((height / 2 - r.radius), (height - r.radius)),50, 20);
-      radarDots.add(rd);
-      rd.moveDot();
-     }
-  }
+   
    
    
    

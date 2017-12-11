@@ -2,7 +2,7 @@ class DashBoard {
    
   int borderW = width / 4;
   int borderH =  height / 20;
-  int buttonAmount = 6;
+  int buttonAmount = 5;
   int textW = 100;
   int i;
   
@@ -12,6 +12,9 @@ class DashBoard {
    background( 255);
    noFill();
    stroke(0,125,255);
+   
+   
+   
    
    strokeWeight(2);
    line( borderW, borderH , borderW , height - borderH);
@@ -37,13 +40,16 @@ class DashBoard {
     
      pushMatrix();
      translate( borderW / 8 , height /4);
-     text("Helo" , textW , textW / 4);
+     text("Map" , textW , textW / 4);
      text("Helo" , textW , textW / 4 + textW);
      text("Helo" , textW , textW / 4 + textW * 2);
-     text("Helo" , textW , textW / 4);
-     text("Helo" , textW , textW / 4);
-     text("Helo" , textW , textW / 4);
+     text("Helo" , textW , textW / 4 + textW * 3);
+     text("Helo" , textW , textW / 4 + textW * 4);
+     text("Helo" , textW , textW / 4 + textW * 5);
      popMatrix();
+     
+   
+   
    
    
   }
