@@ -24,7 +24,7 @@ class WelcomeScreen {
      if(i == 4 || i == 2 ){   
        speed *= -1;
      }
-     arcs.add(new ARC( cX , cY, 100 + ( 50  * i ) , start , stop, speed));
+     arcs.add(new ARC( cX , cY, radius + ( 50  * i ) , start , stop, speed));
    }
   }
     
@@ -34,8 +34,10 @@ class WelcomeScreen {
     background(0);
     textAlign(CENTER);
     fill(255);
-    text("WELCOME TO ARC UI" , width / 2  , height / 2);
-    text("CLICK ANYWHERE TO ENTER" , width / 2  , height / 2 + 12);
+    translate(width / 2 , height / 2);
+    pushMatrix();
+    text("WELCOME TO ARC UI" , 0 , 0);
+    text("CLICK ANYWHERE TO ENTER" , 0  , 0 + 12);
     noFill();
     strokeWeight(3);
     stroke(0,128,200);
@@ -43,15 +45,17 @@ class WelcomeScreen {
     for(i = arcs.size()-1; i >= 0; i--){
       
       ARC arc = arcs.get(i);
+      
+
       arc.update();
       arc.render();
       if(arc.s >= arc.t){
         arcs.remove(i);
-        
       }
+      arc.hover();
 
-    
     }
+    popMatrix();
   }
   
 

@@ -19,7 +19,8 @@ class Button {
   
   void render(){
     
-    stroke(0 , 125, 255);
+    stroke(255);
+    strokeWeight(2);
     line( lengthX , lengthY , buttonW , lengthY);
     line(lengthX , lengthY + 50, buttonW , lengthY + 50);
     line( heightX, heightY, heightX, heightY + 40);
@@ -29,7 +30,9 @@ class Button {
   }
   
   
-  
+  //void update(){
+    
+  //}
   
   
   

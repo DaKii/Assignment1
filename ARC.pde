@@ -9,7 +9,10 @@ class ARC {
   float theta;
   float frequency;
   float s, t;
-  float end = 0;
+  float end;
+  float rMax;
+  float rMin;
+  float strokeIntensity;
   
   ARC ( float cx, float cy, float radius, float start, float stop , float frequency){
 
@@ -20,6 +23,10 @@ class ARC {
    this.stop = stop;
    this.frequency = frequency;
    this.speed = (TWO_PI/ 60.00 ) * frequency;
+   this.end = 0;
+   this.rMax = radius + 50;
+   this.rMin = radius;
+   this.strokeIntensity = 3;
   }
   
   void update(){
@@ -34,20 +41,28 @@ class ARC {
   }
   
   void render(){
-    arc(width / 2, height / 2, (radius * 2) , (radius * 2), s , t, OPEN);
+    strokeWeight(strokeIntensity);
+    arc(0, 0, (radius * 2) , (radius * 2), s , t, OPEN);
   }
   
   void mouseClicked(){
     click = true;
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  //Makes the arc increase in size when hovered over
+  void hover(){
+    if ( mouseX >= (width / 2 - radius) && mouseX <= (width /2 + radius) && mouseY >= height / 2 -  radius && mouseY <= height / 2 + radius && radius < rMax){
+       radius++; 
+       if(strokeIntensity < 7){
+         strokeIntensity++;
+         }
+    }
+    else if (  radius > rMin) {
+       radius--; 
+       if( strokeIntensity > 3){
+         strokeIntensity--;
+       }
+        
+      } 
+    }
 }
