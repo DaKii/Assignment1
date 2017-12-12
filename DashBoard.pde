@@ -1,8 +1,10 @@
 class DashBoard {
   
-  
+  Time t;
   starMap m;
   Radar r;
+  Bar b;
+  
   int borderW = width / 4;
   int borderH =  height / 4;
   int buttonAmount = 2;
@@ -21,6 +23,9 @@ class DashBoard {
      };
      buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * i ,  borderW - borderW / 4));
     };
+    
+    this.b = new Bar(0 , 0 , 50 , 200);
+    this.t = new Time(0,borderH + borderH/ 3);
   }
   
   void render(){
@@ -94,10 +99,20 @@ class DashBoard {
    r.render();
    r.update();
    
+   //map
    pushMatrix();
    translate(borderW,borderH);
    m.render();
    popMatrix();
+   
+   //time
+   pushMatrix();
+   translate(width / 2, height / 2);
+   t.render();
+   b.render();
+   popMatrix();
+   
+   
  
   }
 }
