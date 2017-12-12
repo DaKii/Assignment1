@@ -26,8 +26,6 @@ void draw() {
   }
 }
 
-
 void mouseClicked(){
-
   click = true;  
 }

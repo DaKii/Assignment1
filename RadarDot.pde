@@ -1,3 +1,4 @@
+
 class RadarDot {
 
   float dx;
@@ -24,11 +25,11 @@ class RadarDot {
       strokeWeight(10);
       line(dx,dy,ex,dy);
 
-  }
+      }
     else {
       ex = random(0, width/2);
       strokeWeight(10);
       line(dx,dy,ex,dy);
     }
-  };
+  }
 }
