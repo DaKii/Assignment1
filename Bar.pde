@@ -5,6 +5,11 @@ class Bar{
  float barH;
  float random;
  float time;
+ float bMax;
+ float bMin;
+ 
+ 
+ int change = 0;
   
   Bar(float x , float y , float barW , float barH){
     
@@ -13,17 +18,22 @@ class Bar{
     this.barW = barW;
     this.barH = barH;
     this.time = 60;
+    this.bMax = barH - 50;
+    this.bMin = 0;
+    this.change = 1;
   }
   
   void render() { 
-    
-   fill(0);
-   if ( barH >= 50 && barH < 100) {
-     rect( x , y , barW , -(barH--) );
-   }
-   if ( barH <= 0 || barH < 49) {
-    rect( x , y , barW , barH); 
-    barH++;
-   }
+    rect(x , y , barW  ,barH);
+      barH += change;
+  }
+  
+  
+  
+  void update(){
+    if(barH > bMin || barH < bMax )
+    {
+      change*=-1;
+    }
   }
 }

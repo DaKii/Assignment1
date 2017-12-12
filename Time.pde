@@ -20,8 +20,9 @@ class Time {
     
     text = "Time:" + h + ":" + m + ":" + s ;
     
-    
+    fill(255);
     textSize(30);
+    textAlign(CENTER);
     text(text, x , y);
   }
 }

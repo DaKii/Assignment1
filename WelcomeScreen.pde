@@ -45,8 +45,6 @@ class WelcomeScreen {
     for(i = arcs.size()-1; i >= 0; i--){
       
       ARC arc = arcs.get(i);
-      
-
       arc.update();
       arc.render();
       if(arc.s >= arc.t){

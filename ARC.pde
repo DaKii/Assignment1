@@ -36,7 +36,7 @@ class ARC {
     
     if(click) {
      end+= 0.045;
-    } //<>//
+    }
     
   }
   

@@ -2,9 +2,8 @@ class starMap{
  float x;
  float y;
  float interval;
- float amount;
- float gridW;
- float gridH;
+ float amountW;
+ float amountH;
  int i;
  int j;
  
@@ -12,16 +11,15 @@ class starMap{
   this.x = x;
   this.y = y;
   this.interval = width / 32;
-  this.gridW = (width / 2);
-  this.gridH = (height / 2);
-  this.amount = 32;
+  this.amountW = 15;
+  this.amountH =  8;
   
  }
   
   void render(){
-    for(i = 0 ; i < 15; i++){
-       line(x + (interval * i) , y , x + (interval * i), y + (height / 2 - height / 32)); 
-       for( j = 0; j < 13; j++){
+    for(i = 0 ; i < amountW; i++){
+       line(x + (interval * i) , y , x + (interval * i), y +(amountH * interval)); 
+       for( j = 0; j <= amountH; j++){
          line(x , y + (interval * j) , width / 2 - width / 32, y + (interval * j)); 
        }  
   }
@@ -32,8 +30,18 @@ class starMap{
   
   void update(){
     
+    
+    
   }
   
+  
+  void loadTable(){
+    
+   //Table table = loadTable("planetData.csv");
+    
+    
+    
+  }
   
   
   

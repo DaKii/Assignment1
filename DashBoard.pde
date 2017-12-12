@@ -3,29 +3,41 @@ class DashBoard {
   Time t;
   starMap m;
   Radar r;
-  Bar b;
   
   int borderW = width / 4;
   int borderH =  height / 4;
   int buttonAmount = 2;
   int buttonInterval = borderH / 3;
+  int barAmount = 3;
   int j;
+  int buttonWidth = borderW - borderW / 4;
+
+  
   
   ArrayList<Button> buttons = new ArrayList<Button>();
+  ArrayList<Bar> bars = new ArrayList<Bar>();
   
   DashBoard(){
     
     this.m = new starMap( width / 32 , height /32);
     this.r = new Radar( (width / 4) / 2 ,  -(height / 4 ) / 2 ,100, .5,255);
+   
+   //loop to add 4 buttons
    for(i = 0; i < buttonAmount; i++){ 
      for( j = 0; j < buttonAmount; j++){
-       buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * j ,  borderW - borderW / 4));
+       buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * j ,  buttonWidth));
      };
-     buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * i ,  borderW - borderW / 4));
+     buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * i ,  buttonWidth));
     };
     
-    this.b = new Bar(0 , 0 , 50 , 200);
-    this.t = new Time(0,borderH + borderH/ 3);
+   // loop to add in the bar meters
+    for( i = 0; i < barAmount; i ++){ 
+      bars.add(new Bar(borderW / 4 + (borderW / 4 ) * i, borderH - (borderH / 4), -50 , random(-100, -10 * i) ));
+    }
+    
+    //creates 
+    this.t = new Time(0,borderH + (borderH / 16));
+    
   }
   
   void render(){
@@ -77,42 +89,106 @@ class DashBoard {
    popMatrix();
    
    
-   //buttons for bttom
+   //buttons for bttom left
    strokeWeight(5);
    for ( i = 0; i  < buttonAmount; i++){
-     pushMatrix();
-     translate(0,height - borderH);
+   pushMatrix();
+   translate(0,height - borderH);  
      Button button = buttons.get(i);
      //button.update
      button.render();
-     popMatrix();
-     for ( j = 0; j < buttonAmount; j++){
-       pushMatrix();
-       translate(width - (borderW - borderW /10), height- borderH);
-       //button.update();
-       button.render();
-       popMatrix();
-     };
+     if (i == 0) {    
+      pushMatrix();
+      translate(borderW / 10, buttonInterval);
+      fill(255);
+      textSize(20);
+      text("Radar", borderW / 4  , buttonInterval / 3);
+      popMatrix();
+     }
+     else if (i == 1){
+      pushMatrix();
+      translate(borderW / 10, buttonInterval);
+      fill(255);
+      textSize(20);
+      text("Map", borderW / 4  , buttonInterval + buttonInterval / 3);
+      popMatrix();
+       
+     }
+    popMatrix(); 
    }
-   
+     //buttoms for bottom right 
+     for ( j = 0; j < buttonAmount; j++){
+     pushMatrix();
+     translate(width - (borderW - borderW /10), height- borderH);
+     Button button = buttons.get(j);
+     //button.update();
+     button.render();
+     
+      if (j == 0) {    
+        pushMatrix();
+        translate(borderW / 10, buttonInterval);
+        fill(255);
+        textSize(20);
+        text("Ship Status", borderW / 4  , buttonInterval / 3);
+        popMatrix();
+     }
+       else if (j == 1){
+          pushMatrix();
+          translate(borderW / 10, buttonInterval);
+          fill(255);
+          textSize(20);
+          text("Warpdrive", borderW / 4  , buttonInterval + buttonInterval / 3);
+          popMatrix();
+     };
+     popMatrix();
+   }
+
    //renders and updates the rader
    r.render();
    r.update();
    
    //map
-   pushMatrix();
-   translate(borderW,borderH);
-   m.render();
-   popMatrix();
+   if ( click == true  ){
+     pushMatrix();
+     translate(borderW,borderH);
+     m.render();
+     popMatrix();
+   }
    
    //time
    pushMatrix();
    translate(width / 2, height / 2);
    t.render();
-   b.render();
    popMatrix();
    
    
- 
+   pushMatrix();
+   translate(width - borderW , height / 2);
+   //adding bar meters
+   for(i = 0; i < barAmount; i++){
+     Bar bar = bars.get(i);     
+     fill(255  , 0 , 0 );     
+     bar.update();
+     bar.render();   
+     if(i == 0){
+     textSize(20);
+     text("Ship HP" , borderW /4 + (borderW /4  * i) , borderH - borderH/ 6);
+     }  
+     else if( i == 1){
+     text("Pilot HP" , borderW /4 + (borderW /4  * i)  ,borderH - borderH/ 6);
+     }
+     else if ( i == 2){
+       
+     text("Enemy HP" , borderW /4 + (borderW /4  * i)  , borderH - borderH/ 6);  
+     }
+ }
+   
+   
+   
+
+   
+   popMatrix();
+     
+   
+ }
   }
-}

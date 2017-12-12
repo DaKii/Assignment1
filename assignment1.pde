@@ -20,14 +20,12 @@ void draw() {
   
   if(w.arcs.size() == 0){
     d.render();
-  }
+ }
   else {
-     w.render();
-  }
+   w.render();
+ }
 }
 
-
-void mouseClicked(){
-
+void mousePressed(){
   click = true;  
 }

@@ -5,6 +5,7 @@ class Button {
   float heightY;
   float buttonW;
   float buttonH;
+  boolean click = false;
   
   Button(float x, float y, float buttonW){
     
@@ -29,16 +30,9 @@ class Button {
     
   }
   
-  
-  //void update(){
-    
-  //}
-  
-  
-  
-  
-  
-  
-  
-  
+ void update(){
+ 
+ }
+ 
+
 }
