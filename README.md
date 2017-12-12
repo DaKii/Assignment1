@@ -1,3 +1,2 @@
 # Assignment1
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/f3nVyo_l6sw" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+[![OOP Assignment](http://img.youtube.com/vi/f3nVyo_l6sw/0.jpg)](http://www.youtube.com/watch?v=f3nVyo_l6sw "OOP Assignment")>
